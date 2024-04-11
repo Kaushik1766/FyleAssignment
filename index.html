@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fyle Web Development Challenge</title>
+    <script src="./bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <!-- cdn for bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+</head>
+
+<body onload="rerunPopoverCreation()">
+    <h1 class="text-primary text-center mt-5">Fyle Tax Calculator Assignment</h1>
+    <div class="container-fluid py-5">
+        <div class="row">
+            <div class="col-5 border mx-auto p-5">
+
+                <!-- input form -->
+                <form action="" id="taxForm" class="visually-hiddens d-flex flex-column gap-4 needs-validation"
+                    novalidate>
+                    <!-- gross annual income section -->
+                    <div class="d-flex flex-column gap-2">
+                        <!-- label -->
+                        <div class="d-flex flex-row gap-2">
+                            <label for="income">Enter gross annual income</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="Gross annual income is your total salary in a year before any deductions."></i>
+                        </div>
+                        <!-- input -->
+                        <div class="d-flex flex-row gap-2 align-items-center">
+                            <input type="text" class="form-control" id="income" name="income"
+                                placeholder="Enter gross annual income" required
+                                oninput="validate(this.value, this.id)">
+                            <i class="bi indicator visually-hidden text-success" id="incomeTooltip"
+                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top"
+                                data-bs-content=""></i>
+
+                        </div>
+                    </div>
+
+                    <!-- extra income -->
+                    <div class="d-flex flex-column gap-2">
+                        <!-- label -->
+                        <div class="d-flex flex-row gap-2">
+                            <label for="extraIncome">Enter extra income</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="Extra income is the income you have had apart from the gross annual income"></i>
+                        </div>
+                        <!-- input -->
+                        <div class="d-flex flex-row gap-2 align-items-center">
+                            <input type="text" class="form-control" id="extraIncome" name="extraIncome"
+                                placeholder="Enter the extra income" required oninput="validate(this.value, this.id)">
+                            <i class="bi indicator visually-hidden text-success" id="extraIncomeTooltip"
+                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top"
+                                data-bs-content=""></i>
+
+                        </div>
+                    </div>
+
+                    <!-- deduction -->
+                    <div class="d-flex flex-column gap-2">
+                        <!-- label -->
+                        <div class="d-flex flex-row gap-2">
+                            <label for="deduction">Enter total applicable deductions</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="Enter the deductions you had (if any) enter 0 otherwise"></i>
+                        </div>
+                        <!-- input -->
+                        <div class="d-flex flex-row gap-2 align-items-center">
+                            <input type="text" class="form-control" id="deduction" name="deduction"
+                                placeholder="Enter applicable deductions" required
+                                oninput="validate(this.value, this.id)">
+                            <i class="bi indicator visually-hidden text-success" id="deductionTooltip"
+                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top"
+                                data-bs-content=""></i>
+
+                        </div>
+                    </div>
+
+                    <!-- age input -->
+                    <div class="d-flex flex-column gap-2">
+                        <label for="age">Enter age group</label>
+                        <div class="d-flex flex-row align-items-center gap-2">
+                            <select class="form-select" id="age" name="age" onchange="validate(this.value,this.id)"
+                                required>
+                                <option selected disabled value="-1">Select age group</option>
+                                <option value="1">less than 40 </option>
+                                <option value="2">40-60</option>
+                                <option value="3">greater than 60</option>
+                            </select>
+                            <i class="bi bi-exclamation-circle visually-hidden text-danger" id="ageTooltip"
+                                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top"
+                                data-bs-content="Age cannot be empty"></i>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </form>
+
+                <!-- output box -->
+                <div class="visually-hidden text-center" id="finalIncome">
+                    <h1>Your final income is <span id="incomeValue" class="text-primary"></span></h1>
+                    <p>After tax deductions</p>
+                    <button class="btn btn-primary" onclick="reset()">OK</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
