@@ -18,7 +18,7 @@
     <h1 class="text-primary text-center mt-5">Fyle Tax Calculator Assignment</h1>
     <div class="container-fluid py-5">
         <div class="row">
-            <div class="col-5 border mx-auto p-5">
+            <div class="col-10 col-md-5 border mx-auto py-5 px-2 p-md-5">
 
                 <!-- input form -->
                 <form action="" id="taxForm" class="visually-hiddens d-flex flex-column gap-4 needs-validation"
@@ -87,7 +87,11 @@
 
                     <!-- age input -->
                     <div class="d-flex flex-column gap-2">
-                        <label for="age">Enter age group</label>
+                        <div class="d-flex flex-row gap-2">
+                            <label for="age">Enter extra income</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                                data-bs-placement="top" data-bs-content="Enter the age group which you belong to"></i>
+                        </div>
                         <div class="d-flex flex-row align-items-center gap-2">
                             <select class="form-select" id="age" name="age" onchange="validate(this.value,this.id)"
                                 required>
