@@ -3,7 +3,6 @@
 let form = document.getElementById('taxForm')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-
     let inputFields = document.querySelectorAll('.form-control')
     let valid = 1
 
@@ -115,14 +114,7 @@ function validate(value, currentId) {
 }
 
 function showIncome(income) {
-    // show income output box
-    document.getElementById('finalIncome').classList.remove('visually-hidden')
-    // hide form
-    document.getElementById('taxForm').classList.add('visually-hidden')
-    // set value of income in HTML to the calculated value
     document.getElementById('incomeValue').innerHTML = income
-}
-
-function reset() {
-    window.location.reload()
+    var myModal = new bootstrap.Modal(document.getElementById('outputModal'))
+    myModal.show()
 }
